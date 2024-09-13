@@ -1,5 +1,5 @@
 # Tiro parabólico
-Código modificado de cannon.py
+## Código modificado de cannon.py
 
 Se agregó un if para aumento de velocidad en proyectil
 
