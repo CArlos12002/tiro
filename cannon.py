@@ -68,4 +68,3 @@ tracer(False)
 onscreenclick(tap)
 move()
 done()
-
