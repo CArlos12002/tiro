@@ -1,4 +1,3 @@
-
 from random import randrange
 from turtle import *
 from freegames import vector
@@ -12,8 +11,9 @@ def tap(x, y):
     if not inside(ball):
         ball.x = -199
         ball.y = -199
-        speed.x = (x + 200) / 25
-        speed.y = (y + 200) / 25
+        # Aumentar la velocidad del proyectil
+        speed.x = (x + 200) / 15  # Reducido el divisor para mayor velocidad
+        speed.y = (y + 200) / 15
 
 def inside(xy):
     "Return True if xy within screen."
@@ -40,8 +40,9 @@ def move():
         target = vector(200, y)
         targets.append(target)
 
+    # Aumentar la velocidad de los balones
     for target in targets:
-        target.x -= 0.5
+        target.x -= 1  # Incrementar la velocidad de los balones
 
     if inside(ball):
         speed.y -= 0.35
@@ -60,7 +61,7 @@ def move():
         if not inside(target):
             return
 
-    ontimer(move, 50)
+    ontimer(move, 30)  # Reducir el tiempo entre actualizaciones para mayor velocidad
 
 setup(420, 420, 370, 0)
 hideturtle()
@@ -69,3 +70,4 @@ tracer(False)
 onscreenclick(tap)
 move()
 done()
+
