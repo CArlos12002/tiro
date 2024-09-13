@@ -7,20 +7,16 @@ speed = vector(0, 0)
 targets = []
 
 def tap(x, y):
-    "Respond to screen tap."
     if not inside(ball):
         ball.x = -199
         ball.y = -199
-        # Aumentar la velocidad del proyectil
-        speed.x = (x + 200) / 15  # Reducido el divisor para mayor velocidad
-        speed.y = (y + 200) / 15
+        speed.x = (x + 200) / 12
+        speed.y = (y + 200) / 12
 
 def inside(xy):
-    "Return True if xy within screen."
     return -200 < xy.x < 200 and -200 < xy.y < 200
 
 def draw():
-    "Draw ball and targets."
     clear()
 
     for target in targets:
@@ -34,18 +30,16 @@ def draw():
     update()
 
 def move():
-    "Move ball and targets."
-    if randrange(40) == 0:
+    if randrange(30) == 0:
         y = randrange(-150, 150)
         target = vector(200, y)
         targets.append(target)
 
-    # Aumentar la velocidad de los balones
     for target in targets:
-        target.x -= 1  # Incrementar la velocidad de los balones
+        target.x -= 1.5
 
     if inside(ball):
-        speed.y -= 0.35
+        speed.y -= 0.5
         ball.move(speed)
 
     dupe = targets.copy()
@@ -61,7 +55,7 @@ def move():
         if not inside(target):
             return
 
-    ontimer(move, 30)  # Reducir el tiempo entre actualizaciones para mayor velocidad
+    ontimer(move, 25)
 
 setup(420, 420, 370, 0)
 hideturtle()
@@ -70,4 +64,3 @@ tracer(False)
 onscreenclick(tap)
 move()
 done()
-
